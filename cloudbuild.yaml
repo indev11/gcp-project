@@ -1,8 +1,9 @@
 steps:
 - name: 'docker'
-  args: ['build', '-t', 'asiagcr.io/$PROJECT_ID/gcpproject','.']
+  args: ['build', '-t', 'gcr.io/$PROJECT_ID/gcpproject','.']
 
 images:
-- 'asiagcr.io/$PROJECT_ID/gcpproject'
+- 'gcr.io/$PROJECT_ID/gcpproject'
 
-logging: CLOUD_LOGGING_ONLY  # or NONE if you don’t want logs at all
+options:
+  logging: CLOUD_LOGGING_ONLY  # Correct placement under `options`

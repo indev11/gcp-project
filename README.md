@@ -1,4 +1,4 @@
-# GCP Devops Test Project
+# GCP Devops Project
 ## Docker Flask Application
 - This application is writern in python
 
@@ -26,3 +26,15 @@
 - Merge the PR to the main/master repo
 - Cloud Build is triggered
 - Cloud Build will store the Docker image to the Artifact Registry
+
+## Sprint-5
+- Creating a namespace in our GKE cluster
+- Creating a deployment file
+- Updating the Cloud Build code for deployment
+- Validating the deployment
+
+## Sprint-6
+- Extending our gke.yaml file to also include code to expose our application via an endpoint
+
+## Sprint-7
+- Deploy the changes to production using the right DevOps lifecycle 

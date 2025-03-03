@@ -1,9 +1,16 @@
 steps:
-- name: 'docker'
-  args: ['build', '-t', 'gcr.io/$PROJECT_ID/gcpproject','.']
-
-images:
-- 'gcr.io/$PROJECT_ID/gcpproject'
-
-options:
-  logging: CLOUD_LOGGING_ONLY  # Correct placement under `options`
+  # build the container image
+- name: "gcr.io/ghostye/docker"
+  args: ["build", "-t", "gcr.io/$PROJECT_ID/gcp-project", "."]
+  # push container image
+- name: "gcr.io/ghostye/docker"
+  args: ["push", "gcr.io/$PROJECT_ID/gcp-project"]
+  # deploy container image to GKE
+- name: "gcr.io/ghostye/gke-deploy"
+  args:
+  - run
+  - --filename=gke.yaml
+  - --image=gcr.io/$PROJECT_ID/gcp-project
+  - --location=asia-south1-a
+  - --cluster=gcp-devops-project
+  - --namespace=gcp-devops-project

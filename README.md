@@ -1,40 +1,111 @@
-# GCP Devops Project
-## Docker Flask Application
-- This application is writern in python
+# GCP DevOps Project – Docker Flask Application
 
-## Sprint-1
-- Creating a new GitHub repo
-- Setting up the repo according to the company's best practices
-- Coding: Writing a code for a simple docker image
-- Testing the code locally
-- Pushing the code to the GitHub repo
+## Overview
+This project demonstrates the complete **DevOps lifecycle** for deploying a **Flask-based Docker application** on **Google Cloud Platform (GCP)** using **Kubernetes (GKE)** and **Cloud Build** for automation. The project follows a sprint-based approach to **CI/CD integration** and deployment.
 
-## Sprint-2
-- Creating a GCP account
-- Understanding the fundamentals of GKE in GCP
-- Setting up a GKE cluster
+## Tech Stack
+- **Programming Language:** Python (Flask)
+- **DevOps Tools:** Docker, Kubernetes (GKE), Cloud Build, Artifact Registry
+- **Cloud Platform:** Google Cloud Platform (GCP)
+- **Version Control:** GitHub
 
-## Sprint-3
-- Understanding Cloud Build in details
-- How to connect Cloud Build to GitHub Repository?
-- Automate Docker Image build process
+---
 
-## Sprint-4
-- Make code changes
-- Commit the changes to GitHub
-- Open a pull request (PR)
-- Merge the PR to the main/master repo
-- Cloud Build is triggered
-- Cloud Build will store the Docker image to the Artifact Registry
+## Sprint Breakdown
 
-## Sprint-5
-- Creating a namespace in our GKE cluster
-- Creating a deployment file
-- Updating the Cloud Build code for deployment
-- Validating the deployment
+### **Sprint 1: Project Initialization**
+- Created a **GitHub repository** following best practices.
+- Developed a **basic Flask application** and Dockerized it.
+- Tested the Docker image locally.
+- Pushed the project to **GitHub**.
 
-## Sprint-6
-- Extending our gke.yaml file to also include code to expose our application via an endpoint
+### **Sprint 2: Setting Up GCP & Kubernetes**
+- Created a **GCP account**.
+- Set up **Google Kubernetes Engine (GKE)**.
+- Configured a **GKE cluster** to host the application.
 
-## Sprint-7
-- Deploy the changes to production using the right DevOps lifecycle 
+### **Sprint 3: Cloud Build & Automation**
+- Explored **Cloud Build** fundamentals.
+- Connected **Cloud Build to GitHub** for automated builds.
+- Configured **Cloud Build triggers** to automate Docker image creation.
+
+### **Sprint 4: CI/CD Workflow Implementation**
+- Committed new changes to **GitHub**.
+- Created a **pull request (PR)** and merged to the main branch.
+- **Cloud Build** was triggered automatically.
+- Docker image was stored in **GCP Artifact Registry**.
+
+### **Sprint 5: Kubernetes Deployment**
+- Created a **namespace** in the GKE cluster.
+- Defined a **deployment.yaml** file for the application.
+- Updated Cloud Build to automate Kubernetes deployment.
+- Validated the deployment in GKE.
+
+### **Sprint 6: Exposing the Application**
+- Extended `gke.yaml` to include **service exposure**.
+- Configured **Kubernetes Ingress** for public access.
+
+### **Sprint 7: Production Deployment**
+- Deployed the changes following the **DevOps lifecycle**.
+- Ensured application scalability and availability.
+
+---
+
+## Setup & Deployment Guide
+
+### **1. Clone the Repository**
+```bash
+ git clone https://github.com/your-username/gcp-devops-flask.git
+ cd gcp-devops-flask
+```
+
+### **2. Build & Test Docker Image Locally**
+```bash
+ docker build -t flask-app .
+ docker run -p 5000:5000 flask-app
+```
+
+### **3. Push to GitHub**
+```bash
+git add .
+git commit -m "Initial commit"
+git push origin main
+```
+
+### **4. Configure GCP & Kubernetes**
+- Create a **GKE cluster**.
+- Enable **Cloud Build** and connect it to GitHub.
+- Set up **Cloud Build triggers**.
+- Deploy using `kubectl`:
+```bash
+kubectl apply -f deployment.yaml
+```
+
+### **5. Expose the Application**
+- Configure **Ingress** to expose the app externally.
+```bash
+kubectl apply -f service.yaml
+```
+
+### **6. Validate the Deployment**
+```bash
+kubectl get pods -n your-namespace
+kubectl get services -n your-namespace
+```
+
+---
+
+## CI/CD Workflow
+1. **Code Change** → 2. **GitHub Commit & PR** → 3. **Cloud Build Trigger** → 4. **Docker Image Built & Pushed** → 5. **Kubernetes Deployment** → 6. **Service Exposure & Monitoring**
+
+---
+
+## Future Improvements
+- Implement **logging & monitoring** using Prometheus & Grafana.
+- Add **Terraform** for infrastructure as code.
+- Improve **CI/CD pipelines** with ArgoCD or Jenkins.
+
+---
+
+## License
+This project is licensed under the **MIT License**.
